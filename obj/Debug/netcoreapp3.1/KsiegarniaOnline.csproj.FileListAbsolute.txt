@@ -86,3 +86,4 @@ C:\Users\barteq\Desktop\magisterka\inne zadania\Wieksze Projekty\KsiegarniaOnlin
 C:\Users\barteq\Desktop\magisterka\inne zadania\Wieksze Projekty\KsiegarniaOnline\KsiegarniaOnline\obj\Debug\netcoreapp3.1\KsiegarniaOnline.dll
 C:\Users\barteq\Desktop\magisterka\inne zadania\Wieksze Projekty\KsiegarniaOnline\KsiegarniaOnline\obj\Debug\netcoreapp3.1\KsiegarniaOnline.pdb
 C:\Users\barteq\Desktop\magisterka\inne zadania\Wieksze Projekty\KsiegarniaOnline\KsiegarniaOnline\obj\Debug\netcoreapp3.1\KsiegarniaOnline.genruntimeconfig.cache
+C:\Users\barteq\Desktop\magisterka\inne zadania\Wieksze Projekty\KsiegarniaOnline\KsiegarniaOnline\obj\Debug\netcoreapp3.1\Razor\Views\Home\Gallery.cshtml.g.cs

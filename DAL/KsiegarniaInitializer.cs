@@ -21,7 +21,8 @@ namespace KsiegarniaOnline.DAL
             {
                 new BookCategory { CategoryBook = "Przygodowa" },
                 new BookCategory { CategoryBook = "Informatyczna" },
-                new BookCategory { CategoryBook = "Historyczna" }
+                new BookCategory { CategoryBook = "Historyczna" },
+                new BookCategory { CategoryBook = "Audiobook" }
             };
             foreach(BookCategory bc in bookCategory)
             {
@@ -31,9 +32,9 @@ namespace KsiegarniaOnline.DAL
             
             var books = new Book[]
             {
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 },
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 },
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 }
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[0]},
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[1]},
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[2]}
 
             };
             foreach (Book b in books)

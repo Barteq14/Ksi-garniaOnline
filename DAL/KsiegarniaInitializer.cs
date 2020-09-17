@@ -32,9 +32,9 @@ namespace KsiegarniaOnline.DAL
             
             var books = new Book[]
             {
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[0]},
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[1]},
-                new Book { IBSN = 1111111111, Title = "Ksiazka" , Autor="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[2]}
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Quantity="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[0]},
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Quantity="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[1]},
+                new Book { IBSN = 1111111111, Title = "Ksiazka" , Quantity="Ja", Publisher = "Moja mama", PublishDate = DateTime.Today , NumberOfPages = 401 , BookCategory = bookCategory[2]}
 
             };
             foreach (Book b in books)

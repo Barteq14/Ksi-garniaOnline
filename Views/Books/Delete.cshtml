@@ -18,22 +18,16 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autor)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Autor)
+            @Html.DisplayFor(model => model.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Publisher)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Publisher)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PublishDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PublishDate)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NumberOfPages)
@@ -42,15 +36,51 @@
             @Html.DisplayFor(model => model.NumberOfPages)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Binding)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Binding)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IBSN)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IBSN)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BookCategory)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BookCategory.CategoryBook)
         </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author.FirstName)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishHouse)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublishHouse.PublishHouseName)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.KindOfBook)
+        </dd class>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="IBSN" />
+        <input type="hidden" asp-for="IdBook" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

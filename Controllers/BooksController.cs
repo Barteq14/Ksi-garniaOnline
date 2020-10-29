@@ -22,7 +22,7 @@ namespace KsiegarniaOnline.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var ksiegarniaOnlineContext = _context.Books.Include(b => b.BookCategory);
+            var ksiegarniaOnlineContext = _context.Books.Include(b => b.Author).Include(b => b.BookCategory).Include(b => b.Category).Include(b => b.PublishHouse);
             return View(await ksiegarniaOnlineContext.ToListAsync());
         }
 
@@ -35,8 +35,11 @@ namespace KsiegarniaOnline.Controllers
             }
 
             var book = await _context.Books
+                .Include(b => b.Author)
                 .Include(b => b.BookCategory)
-                .FirstOrDefaultAsync(m => m.IBSN == id);
+                .Include(b => b.Category)
+                .Include(b => b.PublishHouse)
+                .FirstOrDefaultAsync(m => m.IdBook == id);
             if (book == null)
             {
                 return NotFound();
@@ -48,7 +51,10 @@ namespace KsiegarniaOnline.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "IdAuthor", "FirstName");
             ViewData["BookCategoryID"] = new SelectList(_context.BookCategories, "CategoryID", "CategoryBook");
+            ViewData["CategoryID"] = new SelectList(_context.Categories, "IdCategory", "KindOfBook");
+            ViewData["PublishHouseID"] = new SelectList(_context.PublishHouses, "IdPublishHouse", "PublishHouseName");
             return View();
         }
 
@@ -57,7 +63,7 @@ namespace KsiegarniaOnline.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IBSN,Title,Autor,Publisher,PublishDate,NumberOfPages,BookCategoryID")] Book book)
+        public async Task<IActionResult> Create([Bind("IdBook,Title,Price,Quantity,NumberOfPages,Description,Binding,IBSN,BookCategoryID,AuthorID,PublishHouseID,CategoryID")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +71,10 @@ namespace KsiegarniaOnline.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "IdAuthor", "FirstName", book.AuthorID);
             ViewData["BookCategoryID"] = new SelectList(_context.BookCategories, "CategoryID", "CategoryBook", book.BookCategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Categories, "IdCategory", "KindOfBook", book.CategoryID);
+            ViewData["PublishHouseID"] = new SelectList(_context.PublishHouses, "IdPublishHouse", "PublishHouseName", book.PublishHouseID);
             return View(book);
         }
 
@@ -82,7 +91,10 @@ namespace KsiegarniaOnline.Controllers
             {
                 return NotFound();
             }
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "IdAuthor", "FirstName", book.AuthorID);
             ViewData["BookCategoryID"] = new SelectList(_context.BookCategories, "CategoryID", "CategoryBook", book.BookCategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Categories, "IdCategory", "KindOfBook", book.CategoryID);
+            ViewData["PublishHouseID"] = new SelectList(_context.PublishHouses, "IdPublishHouse", "PublishHouseName", book.PublishHouseID);
             return View(book);
         }
 
@@ -91,9 +103,9 @@ namespace KsiegarniaOnline.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IBSN,Title,Autor,Publisher,PublishDate,NumberOfPages,BookCategoryID")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("IdBook,Title,Price,Quantity,NumberOfPages,Description,Binding,IBSN,BookCategoryID,AuthorID,PublishHouseID,CategoryID")] Book book)
         {
-            if (id != book.IBSN)
+            if (id != book.IdBook)
             {
                 return NotFound();
             }
@@ -107,7 +119,7 @@ namespace KsiegarniaOnline.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BookExists(book.IBSN))
+                    if (!BookExists(book.IdBook))
                     {
                         return NotFound();
                     }
@@ -118,7 +130,10 @@ namespace KsiegarniaOnline.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "IdAuthor", "FirstName", book.AuthorID);
             ViewData["BookCategoryID"] = new SelectList(_context.BookCategories, "CategoryID", "CategoryBook", book.BookCategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Categories, "IdCategory", "KindOfBook", book.CategoryID);
+            ViewData["PublishHouseID"] = new SelectList(_context.PublishHouses, "IdPublishHouse", "PublishHouseName", book.PublishHouseID);
             return View(book);
         }
 
@@ -131,8 +146,11 @@ namespace KsiegarniaOnline.Controllers
             }
 
             var book = await _context.Books
+                .Include(b => b.Author)
                 .Include(b => b.BookCategory)
-                .FirstOrDefaultAsync(m => m.IBSN == id);
+                .Include(b => b.Category)
+                .Include(b => b.PublishHouse)
+                .FirstOrDefaultAsync(m => m.IdBook == id);
             if (book == null)
             {
                 return NotFound();
@@ -154,7 +172,7 @@ namespace KsiegarniaOnline.Controllers
 
         private bool BookExists(int id)
         {
-            return _context.Books.Any(e => e.IBSN == id);
+            return _context.Books.Any(e => e.IdBook == id);
         }
     }
 }

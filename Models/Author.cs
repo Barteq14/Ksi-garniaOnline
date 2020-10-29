@@ -9,6 +9,7 @@ namespace KsiegarniaOnline.Models
     public class Author
     {
         [Key]
+        [Required]
         public int IdAuthor { get; set; }
         [Required]
         [MaxLength(100)]

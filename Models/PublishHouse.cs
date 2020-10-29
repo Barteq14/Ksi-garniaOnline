@@ -9,6 +9,7 @@ namespace KsiegarniaOnline.Models
     public class PublishHouse
     {
         [Key]
+        [Required]
         public int IdPublishHouse { get; set; }
         [Required]
         [MaxLength(100)]

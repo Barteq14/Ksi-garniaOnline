@@ -9,6 +9,7 @@ namespace KsiegarniaOnline.Models
     public class Category
     {
         [Key]
+        [Required]
         public int IdCategory { get; set; }
         [Required]
         [MaxLength(100)]

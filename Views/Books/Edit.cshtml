@@ -12,26 +12,21 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IBSN" />
+            <input type="hidden" asp-for="IdBook" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Autor" class="control-label"></label>
-                <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Publisher" class="control-label"></label>
-                <input asp-for="Publisher" class="form-control" />
-                <span asp-validation-for="Publisher" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublishDate" class="control-label"></label>
-                <input asp-for="PublishDate" class="form-control" />
-                <span asp-validation-for="PublishDate" class="text-danger"></span>
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumberOfPages" class="control-label"></label>
@@ -39,9 +34,39 @@
                 <span asp-validation-for="NumberOfPages" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Binding" class="control-label"></label>
+                <input asp-for="Binding" class="form-control" />
+                <span asp-validation-for="Binding" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IBSN" class="control-label"></label>
+                <input asp-for="IBSN" class="form-control" />
+                <span asp-validation-for="IBSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="BookCategoryID" class="control-label"></label>
                 <select asp-for="BookCategoryID" class="form-control" asp-items="ViewBag.BookCategoryID"></select>
                 <span asp-validation-for="BookCategoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorID" class="control-label"></label>
+                <select asp-for="AuthorID" class="form-control" asp-items="ViewBag.AuthorID"></select>
+                <span asp-validation-for="AuthorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishHouseID" class="control-label"></label>
+                <select asp-for="PublishHouseID" class="form-control" asp-items="ViewBag.PublishHouseID"></select>
+                <span asp-validation-for="PublishHouseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryID" class="control-label"></label>
+                <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
+                <span asp-validation-for="CategoryID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -10,6 +10,7 @@ namespace KsiegarniaOnline.Models
     public class Book
     {
         [Key]
+        [Required]
         public int IdBook { get; set; }
         [Required]
         [MaxLength(55)]
@@ -27,7 +28,7 @@ namespace KsiegarniaOnline.Models
         [MaxLength(100)]
         public string Binding { get; set; }
         [Required]
-        public int IBSN { get; set; }
+        public string IBSN { get; set; }
         [Required]
         [MaxLength(100)]
         public int BookCategoryID { get; set; }

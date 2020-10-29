@@ -17,12 +17,19 @@ namespace KsiegarniaOnline.DAL
         public DbSet<Book> Books { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<PublishHouse> PublishHouses { get; set; }
+        public DbSet<Category> Categories { get; set; }   
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().ToTable("Books");
             modelBuilder.Entity<BookCategory>().ToTable("BookCategories");
             modelBuilder.Entity<Profile>().ToTable("Profiles");
+            modelBuilder.Entity<Author>().ToTable("Authors");
+            modelBuilder.Entity<PublishHouse>().ToTable("PublishHouses");
+            modelBuilder.Entity<Category>().ToTable("Categories");
         }
 
     }

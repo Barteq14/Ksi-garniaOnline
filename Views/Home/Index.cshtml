@@ -1,54 +1,77 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<a href="#s">Strona główna</a> | 
-<a href="#ssd">O nas</a> | 
-<a href="#item3">Kontakt</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <script src="https://kit.fontawesome.com/3d8aae3948.js" crossorigin="anonymous"></script>
+</head>
+<body>
 
-<div class="items">
-    <p id="item1" class="alert-primary">
-        sdasdsa
-    </p>
-    <p id="item2">
-        Nasza Księgarnia zawiera mnóstwo książek artykułów, czasopism oraz innych tekstów, które mogą Cię zaciekawić Drogi Użytkowniku.
-        Jesteśmy nowo powstałą biblioteką online na rynku, dzięki której możesz wyporzyczać książki oraz je kupować. W naszym asortymencie znajdziesz również
-        wiele ebooków.
-    </p>
-    <p id="item3" class="contact">
-        Kontakt: <br />
-        Telefon: 999 100 300 <br />
-        Adres głównego budynku: 02-200 Warszawa ul. Poniatowskiego 36 B <br />
-        Adres e-mail: ksiegarnia.marzen@gmail.com
-    </p>
-    <p id="item4">item 4</p>
-    <p id="item5">item 5</p>
-    <p id="item6">item 6</p>
-</div>
+    <div class="container ctn">
 
-<div id="s">
-    sadsadasdsadsa<br /><br /><br /><br /><br />asdasdasdsadasdasd<br /><br /><br />Sas
+        <div class="row ">
+            <div class="col-12 welcome">
+                <p>
+                    <h1 class="display-4"><i class="fas fa-book-open"></i>Witajcie w naszej księgarni online!<i class="fas fa-book-open"></i></h1>
+                </p>
+            </div>
+            <div class="col-3 menu">
+                <p>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Strona główna <br /></a>
+
+                </p>
+            </div>
+            <div class="col-3 menu">
+                <p>
+                    <a href="#ssd">O nas</a>
+                </p>
+            </div>
+            <div class="col-3 menu">
+                <p>
+                    <a href="#item3">Kontakt</a>
+                </p>
+            </div>
+            <div class="col-3 menu">
+                <p>
+                    <a asp-area="" asp-controller="Books" asp-action="Index">List of books</a>
+                </p>
+            </div>
+        </div>
+
+    
+    <div class="items">
+        <br /><br /><br /><br />
+        <p id="item4">item 4</p>
+        <p id="item5">item 5</p>
+        <p id="item6">item 6</p>
+    </div>
+    <hr />
+    <div class="onas">
+        <div id="ssd">
+            <p>
+                <h2>BartBooks!</h2>
+            </p>
+            <h3>
+                Jest to jedna z największych księgarni Internetowych, która oferuje bogaty wybór e-booków i audiobooków. U nas każdy znajdzie coś dla siebie –
+                polecamy zarówno beletrystykę, jak i książki akademickie. W swojej ofercie posiadamy ponad 70 tysięcy publikacji naukowych z wielu dziedzin,
+                wśród nich ebooki z zakresu nauk ekonomicznych, humanistycznych, matematyczno-przyrodniczych, społecznych. Oferujemy wypożyczenie e-booków z takich
+                kategorii jak ekonomia, zarządzanie, pedagogika, psychologia, medycyna czy prawo.
+            </h3>
+        </div>
+    </div>
+    <hr />
+    <div id="item3">
+        <p class="contact">
+            Kontakt: <br />
+            Telefon: 999 100 300 <br />
+            Adres głównego budynku: 02-200 Warszawa ul. Poniatowskiego 36 B <br />
+            Adres e-mail: ksiegarnia.marzen@gmail.com
+        </p>
+    </div>
 </div>
-<hr />
-<div id="ssd">
-    sadaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj<br />
-    dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-    llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
-    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br />a
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-    eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-    ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-    yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-</div>
-<hr />
-<div id="d"><br /><br /><br /><br /><br />
-    sadsadasdsadsaasdasdasdsadsadsadsadsdasdasdsad<br /><br />SADASDasDASDASDASDASDasds
-</div>
+</body>
+</html>

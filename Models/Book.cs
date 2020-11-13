@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace KsiegarniaOnline.Models
@@ -16,7 +19,8 @@ namespace KsiegarniaOnline.Models
         [MaxLength(55)]
         public string Title { get; set; }
         [Required]
-        public double Price { get; set; }
+        [Range(0,99999)]
+        public int Price { get; set; }
         [Required]
         public int Quantity { get; set; }
         [Required]
@@ -46,5 +50,6 @@ namespace KsiegarniaOnline.Models
         public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Category Category { get; set; }
+
     }
 }

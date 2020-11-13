@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KsiegarniaOnline.DAL;
 using KsiegarniaOnline.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace KsiegarniaOnline.Controllers
 {
@@ -18,12 +19,139 @@ namespace KsiegarniaOnline.Controllers
         {
             _context = context;
         }
-
+       [HttpGet]
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string searchPrice, string sortOrder, string currentFilter, string currentFilter2)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewData["AuthorSortParm"] = sortOrder == "Author" ? "author_desc" : "Author";
+            ViewData["WydawnictwoSortParm"] = sortOrder == "Wydawnictwo" ? "wydawnictwo_desc" : "Wydawnictwo";
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentFilter2"] = searchPrice;
+
+            
+
             var ksiegarniaOnlineContext = _context.Books.Include(b => b.Author).Include(b => b.BookCategory).Include(b => b.Category).Include(b => b.PublishHouse);
-            return View(await ksiegarniaOnlineContext.ToListAsync());
+            //var cena = _context.Books.Where(o => o.Price <= searchInt).Select(o => o);
+
+            var books = from b in ksiegarniaOnlineContext
+                        select b;
+
+
+            if (!String.IsNullOrEmpty(searchString) && String.IsNullOrEmpty(searchPrice))
+            {
+                String napis;
+                    try
+                    {
+                        napis = searchString;
+                        books = books.Where(p => p.Title.Contains(napis) ||
+                        p.Author.FirstName.Contains(napis) ||
+                        p.Category.KindOfBook.Contains(napis));
+
+
+                        ViewBag.phrase = "Szukana fraza: " + napis + " | ";
+                        ViewBag.count = "Ilość znalezionych pozycji: " + books.Count();
+                    }
+                    catch
+                    {
+                        ViewBag.komunikat = "Podaj tytuł lub autora!";
+                    }
+
+                }
+                else if(!String.IsNullOrEmpty(searchString) && !String.IsNullOrEmpty(searchPrice))
+                {
+                    int price;
+                    try
+                    {
+                        price = Int32.Parse(searchPrice);
+
+                        if (price > 0)
+                        {
+                            books = books.Where(p => p.Title.Contains(searchString) &&
+                            p.Price <= price);
+
+                            ViewBag.phrase = "Szukana fraza: " + searchString + " | ";
+                            ViewBag.count = "Ilość znalezionych pozycji: " + books.Count();
+                            ViewBag.price = "Maksymalna cena: " + price + " | ";
+                        }
+                        else
+                        {
+                            ViewBag.error = "Podaj prawidłową cenę!";
+                            ViewBag.phrase = "Szukana fraza: " + searchString + " | ";
+                            ViewBag.count = "Ilość znalezionych pozycji: 0";
+                            ViewBag.price = "Maksymalna cena: " + price + " | ";
+                        }
+                    }
+                    catch
+                    {
+                        ViewBag.komunikat = "Podaj cyfrę!";
+                    } 
+                }
+                else if(String.IsNullOrEmpty(searchString) && !String.IsNullOrEmpty(searchPrice))
+                {
+
+                    int price;
+
+                    try
+                    {
+                        price = Int32.Parse(searchPrice);
+
+                        if (price > 0)
+                        {
+                            books = books.Where(p => p.Title.Contains(searchString) ||
+                            p.Price <= price);
+
+
+                            ViewBag.price = "Maksymalna cena: " + price + " | ";
+                            ViewBag.count = "Ilość znalezionych pozycji: " + books.Count();
+                        }
+                        else
+                        {
+                            ViewBag.error = "Podaj prawidłową cenę!";
+                            ViewBag.price = "Maksymalna cena: " + price + " | ";
+                            ViewBag.count = "Ilość znalezionych pozycji: 0";
+                        }
+                    }
+                    catch{
+                        ViewBag.komunikat = "Podaj cyfrę!";
+                    }
+
+                }
+               
+
+
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    books = books.OrderByDescending(s => s.Title);
+                    break;
+                case "Price":
+                    books = books.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    books = books.OrderByDescending(s => s.Price);
+                    break;
+                case "Author":
+                    books = books.OrderBy(s => s.Author.FirstName);
+                    break;
+                case "author_desc":
+                    books = books.OrderByDescending(s => s.Author.FirstName);
+                    break;
+                case "Wydawnictwo":
+                    books = books.OrderBy(s => s.PublishHouse.PublishHouseName);
+                    break;
+                case "wydawnictwo_desc":
+                    books = books.OrderByDescending(s => s.PublishHouse.PublishHouseName);
+                    break;
+                default:
+                    books = books.OrderBy(s => s.Title);
+                    break;
+            }
+
+            return View(await  books.AsNoTracking().ToListAsync());
         }
 
         // GET: Books/Details/5

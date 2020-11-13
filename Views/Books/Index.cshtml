@@ -3,93 +3,120 @@
 @{
     ViewData["Title"] = "Index";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/3d8aae3948.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
 
-<h1>Index</h1>
+        <h1>Książki</h1>
+        
+        
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <form asp-controller="Books" asp-action="Index" method="get">
+            <p>
+                Wyszukaj po: Tytule | Autorze  <input type="text" name="SearchString">   Maksymalna cena: <input type="text" name="SearchPrice">
+                <input type="submit" value="Filter" />  <b>@ViewBag.error</b> <b>@ViewBag.komunikat</b> 
+            </p>
+        </form>
+        
+        <p>
+            <b>@ViewBag.phrase</b> <b>@ViewBag.price</b>   <b>@ViewBag.count</b>
+        </p>
+       
+        <p>
+            Wróć do listy książek: <a asp-action="Index">Książki</a>
+        </p>
+        <div class="row">
+            <table class="table col-12 tb">
+                <thead>
+                    <tr class="trb">
+                        <th>
+                            <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.Label("Tytuł")</a>
+                        </th>
+                        <th>
+                            <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter2"]">@Html.Label("Cena")</a>
+                        </th>
+                        <th>
+                            @Html.Label("Ilość sztuk")
+                        </th>
+                        <th>
+                            @Html.Label("Ilość stron")
+                        </th>
+                        <th>
+                            @Html.Label("Rodzaj")
+                        </th>
+                        <th>
+                            @Html.Label("ISBN")
+                        </th>
+                        <th>
+                            @Html.Label("Kategoria książki")
+                        </th>
+                        <th>
+                            <a asp-action="Index" asp-route-sortOrder="@ViewData["AuthorSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.Label("Autor")</a>
+                        </th>
+                        <th>
+                            <a asp-action="Index" asp-route-sortOrder="@ViewData["WydawnictwoSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.Label("Wydawnictwo")</a>
+                        </th>
+                        <th>
+                            @Html.Label("Kategoria")
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfPages)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Binding)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IBSN)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookCategory.CategoryBook)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Author.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublishHouse.PublishHouseName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.KindOfBook)
+                            </td>
+                            <!--<td>
+                            <a asp-action="Edit" asp-route-id="@item.IdBook">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdBook">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdBook">Delete</a>
+                        </td>-->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfPages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Binding)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IBSN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookCategory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishHouse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfPages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Binding)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IBSN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookCategory.CategoryBook)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishHouse.PublishHouseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.KindOfBook)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdBook">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdBook">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdBook">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    </div>
+
+
+</body>
+</html>

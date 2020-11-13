@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KsiegarniaOnline.Migrations
 {
     [DbContext(typeof(KsiegarniaOnlineContext))]
-    [Migration("20200917083909_mig")]
+    [Migration("20201031110740_mig")]
     partial class mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,8 +76,8 @@ namespace KsiegarniaOnline.Migrations
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("PublishHouseID")
                         .HasColumnType("int");

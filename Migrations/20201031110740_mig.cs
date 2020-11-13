@@ -86,7 +86,7 @@ namespace KsiegarniaOnline.Migrations
                     IdBook = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 55, nullable: false),
-                    Price = table.Column<double>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     NumberOfPages = table.Column<int>(nullable: false),
                     Description = table.Column<string>(maxLength: 999999999, nullable: false),

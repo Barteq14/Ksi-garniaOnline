@@ -12,7 +12,7 @@ namespace KsiegarniaOnline.DAL
         {
             context.Database.EnsureCreated();
 
-            if (context.Books.Any())
+            if (context.Categories.Any())
             {
                 return;   // DB has been seeded
             }
@@ -84,11 +84,16 @@ namespace KsiegarniaOnline.DAL
             
             var books = new Book[]
             {
-                new Book { Title = "tytul1", Price = 99.99 , Quantity = 15, NumberOfPages = 300, IBSN = "123456789101", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
-                new Book { Title = "ksiazka1", Price = 39.90 , Quantity = 9, NumberOfPages = 350, IBSN = "123456789102", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
-                new Book { Title = "ebook1", Price = 40.05 , Quantity = 10, NumberOfPages = 157, IBSN = "123456789103", Binding = "wersja elektroniczna", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[1], PublishHouse = publishHouses[1], BookCategory = bookCategory[1], Category = categories[1]},
-                new Book { Title = "podrecznik1", Price = 105.99 , Quantity = 7, NumberOfPages = 290, IBSN = "123456789104", Binding = "miekka okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[2], PublishHouse = publishHouses[2], BookCategory = bookCategory[2], Category = categories[0]},
-                new Book { Title = "audiobook1", Price = 16.99 , Quantity = 5, NumberOfPages = 20, IBSN = "123456789105", Binding = "wersja audio", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[3], PublishHouse = publishHouses[3], BookCategory = bookCategory[3], Category = categories[3]}
+                new Book { Title = "tytul1", Price = 99 , Quantity = 15, NumberOfPages = 300, IBSN = "123456789101", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
+                new Book { Title = "ksiazka1", Price = 39 , Quantity = 9, NumberOfPages = 350, IBSN = "123456789102", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
+                new Book { Title = "ebook1", Price = 40 , Quantity = 10, NumberOfPages = 157, IBSN = "123456789103", Binding = "wersja elektroniczna", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[1], PublishHouse = publishHouses[1], BookCategory = bookCategory[1], Category = categories[1]},
+                new Book { Title = "podrecznik1", Price = 105 , Quantity = 7, NumberOfPages = 290, IBSN = "123456789104", Binding = "miekka okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[2], PublishHouse = publishHouses[2], BookCategory = bookCategory[2], Category = categories[0]},
+                new Book { Title = "audiobook1", Price = 16 , Quantity = 5, NumberOfPages = 20, IBSN = "123456789105", Binding = "wersja audio", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[3], PublishHouse = publishHouses[3], BookCategory = bookCategory[3], Category = categories[3]},
+                new Book { Title = "audiobook2", Price = 16 , Quantity = 5, NumberOfPages = 20, IBSN = "123456789105", Binding = "wersja audio", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[3], PublishHouse = publishHouses[3], BookCategory = bookCategory[3], Category = categories[3]},
+                new Book { Title = "tytul2", Price = 100 , Quantity = 15, NumberOfPages = 300, IBSN = "123456789101", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
+                new Book { Title = "Ksiazeczka", Price = 29 , Quantity = 9, NumberOfPages = 350, IBSN = "123456789102", Binding = "Twarda okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[0], PublishHouse = publishHouses[0], BookCategory = bookCategory[0], Category = categories[0]},
+                new Book { Title = "ebook4", Price = 40 , Quantity = 10, NumberOfPages = 157, IBSN = "123456789103", Binding = "wersja elektroniczna", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[1], PublishHouse = publishHouses[1], BookCategory = bookCategory[1], Category = categories[1]},
+                new Book { Title = "podrecznik3", Price = 105 , Quantity = 7, NumberOfPages = 290, IBSN = "123456789104", Binding = "miekka okładka", Description = "adasdashdjahsdkahsdjkahsdjasgdhasgdjashdjkasdhsajdhasjkdhasjkdhas", Author = author[2], PublishHouse = publishHouses[2], BookCategory = bookCategory[2], Category = categories[0]}
             };
             foreach (Book b in books)
             {

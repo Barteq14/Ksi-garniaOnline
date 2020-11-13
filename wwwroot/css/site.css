@@ -170,3 +170,12 @@ Html, body {
     border:solid 1px black;
     background-color:burlywood; 
 }
+
+.tb{
+    border: 1px solid black;
+    background-color:darkkhaki;
+}
+
+.trb{
+    background-color:burlywood;
+}
